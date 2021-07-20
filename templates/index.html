@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Questionário</title>
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<header class="header">
+    <h2>{{titulo}}</h2>
+	  <p>{{descricao}}</p>
+</header>
+<form name="Formulário" action="/gravarResposta" method="post">
+  <input type="hidden" value="{{id_formulario}}">
+{% for pergunta in perguntas %}
+<div id="{{pergunta.getId()}}">
+<div class="container">
+	
+	<h2>{{pergunta.getId()}}. {{pergunta.getTexto()}}</h2>
+	
+  <ul>
+  <li>
+    <input type="radio" id="{{pergunta.getOpcao1()}}" name="{{pergunta.getId()}}" value="{{pergunta.getOpcao1()}}">
+    <label for="{{pergunta.getOpcao1()}}">{{pergunta.getOpcao1()}}</label>
+    
+    <div class="check"></div>
+  </li>
+  
+  <li>
+    <input type="radio" id="{{pergunta.getOpcao2()}}" name="{{pergunta.getId()}}" value="{{pergunta.getOpcao2()}}">
+    <label for="{{pergunta.getOpcao2()}}">{{pergunta.getOpcao2()}}</label>
+    
+    <div class="check"><div class="inside"></div></div>
+  </li>
+  
+  <li>
+    <input type="radio" id="{{pergunta.getOpcao3()}}" name="{{pergunta.getId()}}" value="{{pergunta.getOpcao3()}}">
+    <label for="{{pergunta.getOpcao3()}}">{{pergunta.getOpcao3()}}</label>
+    
+    <div class="check"><div class="inside"></div></div>
+  </li>
+
+  
+  <li>
+    <input type="radio" id="{{pergunta.getOpcao4()}}" name="{{pergunta.getId()}}" value="{{pergunta.getOpcao4()}}">
+    <label for="{{pergunta.getOpcao4()}}">{{pergunta.getOpcao4()}}</label>
+    
+    <div class="check"><div class="inside"></div></div>
+  </li>
+</ul>
+</div>
+</div>
+{% endfor %}
+<input class="responder" type=submit value=Responder>
+</form>
+
+<div class="signature">
+	<p>Criado por: <a href="www.linkedin.com/in/ekleorf">Erik Fontoura</a></p>
+</div>
+</html>

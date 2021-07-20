@@ -1,0 +1,398 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.7
+-- Dumped by pg_dump version 12.7
+
+-- Started on 2021-07-20 10:33:23
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 206 (class 1259 OID 16512)
+-- Name: tb_form_pergunta; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_form_pergunta (
+    id_formulario integer NOT NULL,
+    id_pergunta integer NOT NULL
+);
+
+
+ALTER TABLE public.tb_form_pergunta OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 16516)
+-- Name: tb_form_pergunta_id_formulario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_form_pergunta_id_formulario_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_form_pergunta_id_formulario_seq OWNER TO postgres;
+
+--
+-- TOC entry 2863 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: tb_form_pergunta_id_formulario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_form_pergunta_id_formulario_seq OWNED BY public.tb_form_pergunta.id_formulario;
+
+
+--
+-- TOC entry 208 (class 1259 OID 16522)
+-- Name: tb_form_pergunta_id_pergunta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_form_pergunta_id_pergunta_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_form_pergunta_id_pergunta_seq OWNER TO postgres;
+
+--
+-- TOC entry 2864 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: tb_form_pergunta_id_pergunta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_form_pergunta_id_pergunta_seq OWNED BY public.tb_form_pergunta.id_pergunta;
+
+
+--
+-- TOC entry 203 (class 1259 OID 16490)
+-- Name: tb_formulario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_formulario (
+    id_formulario integer NOT NULL,
+    titulo text,
+    descricao text
+);
+
+
+ALTER TABLE public.tb_formulario OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16488)
+-- Name: tb_formulario_id_formulario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_formulario_id_formulario_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_formulario_id_formulario_seq OWNER TO postgres;
+
+--
+-- TOC entry 2865 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: tb_formulario_id_formulario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_formulario_id_formulario_seq OWNED BY public.tb_formulario.id_formulario;
+
+
+--
+-- TOC entry 205 (class 1259 OID 16501)
+-- Name: tb_perguntas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_perguntas (
+    id_pergunta integer NOT NULL,
+    texto text,
+    opcao1 text,
+    opcao2 text,
+    opcao3 text,
+    opcao4 text
+);
+
+
+ALTER TABLE public.tb_perguntas OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16499)
+-- Name: tb_perguntas_id_pergunta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_perguntas_id_pergunta_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_perguntas_id_pergunta_seq OWNER TO postgres;
+
+--
+-- TOC entry 2866 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: tb_perguntas_id_pergunta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_perguntas_id_pergunta_seq OWNED BY public.tb_perguntas.id_pergunta;
+
+
+--
+-- TOC entry 210 (class 1259 OID 16542)
+-- Name: tb_respostas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_respostas (
+    id_formulario integer NOT NULL,
+    resposta1 text,
+    resposta2 text,
+    resposta3 text,
+    resposta4 text
+);
+
+
+ALTER TABLE public.tb_respostas OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 16540)
+-- Name: tb_respostas_id_formulario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_respostas_id_formulario_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_respostas_id_formulario_seq OWNER TO postgres;
+
+--
+-- TOC entry 2867 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: tb_respostas_id_formulario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_respostas_id_formulario_seq OWNED BY public.tb_respostas.id_formulario;
+
+
+--
+-- TOC entry 2712 (class 2604 OID 16518)
+-- Name: tb_form_pergunta id_formulario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_form_pergunta ALTER COLUMN id_formulario SET DEFAULT nextval('public.tb_form_pergunta_id_formulario_seq'::regclass);
+
+
+--
+-- TOC entry 2713 (class 2604 OID 16524)
+-- Name: tb_form_pergunta id_pergunta; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_form_pergunta ALTER COLUMN id_pergunta SET DEFAULT nextval('public.tb_form_pergunta_id_pergunta_seq'::regclass);
+
+
+--
+-- TOC entry 2710 (class 2604 OID 16493)
+-- Name: tb_formulario id_formulario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_formulario ALTER COLUMN id_formulario SET DEFAULT nextval('public.tb_formulario_id_formulario_seq'::regclass);
+
+
+--
+-- TOC entry 2711 (class 2604 OID 16504)
+-- Name: tb_perguntas id_pergunta; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_perguntas ALTER COLUMN id_pergunta SET DEFAULT nextval('public.tb_perguntas_id_pergunta_seq'::regclass);
+
+
+--
+-- TOC entry 2714 (class 2604 OID 16545)
+-- Name: tb_respostas id_formulario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_respostas ALTER COLUMN id_formulario SET DEFAULT nextval('public.tb_respostas_id_formulario_seq'::regclass);
+
+
+--
+-- TOC entry 2853 (class 0 OID 16512)
+-- Dependencies: 206
+-- Data for Name: tb_form_pergunta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_form_pergunta (id_formulario, id_pergunta) FROM stdin;
+1	1
+1	2
+1	3
+1	4
+\.
+
+
+--
+-- TOC entry 2850 (class 0 OID 16490)
+-- Dependencies: 203
+-- Data for Name: tb_formulario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_formulario (id_formulario, titulo, descricao) FROM stdin;
+1	Pesquisa de clientes Bem Promotora	A Bem Promotora é uma empresa com diversos produtos, tendo seu principal foco no Crédito Consignado.\nGostariamos de conhecer um pouco mais sobre você, para estar sempre desenvolvendo produtos e serviços que atendam à necessidade do nosso cliente.
+\.
+
+
+--
+-- TOC entry 2852 (class 0 OID 16501)
+-- Dependencies: 205
+-- Data for Name: tb_perguntas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_perguntas (id_pergunta, texto, opcao1, opcao2, opcao3, opcao4) FROM stdin;
+1	Qual sua faixa de Idade:	Até 30 anos.	De 30 a 50 anos.	De 50 a 65 anos.	Acima de 65 anos.
+2	Qual seu convênio:	INSS	SIAPE	Forças Armadas	Outros
+3	Qual sua faixa salarial:	Até 2 salários mínimos.	De 2 a 4 salários mínimos.	De 4 a 6 salários mínimos.	Acima de 6 salários mínimos.
+4	Por que você realizou o empréstimo:	Pagar Contas.	Reforma da Casa	Compra de Carro.	Outro
+\.
+
+
+--
+-- TOC entry 2857 (class 0 OID 16542)
+-- Dependencies: 210
+-- Data for Name: tb_respostas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_respostas (id_formulario, resposta1, resposta2, resposta3, resposta4) FROM stdin;
+1	Até 30 anos.	SIAPE	De 4 a 6 salários mínimos.	Pagar Contas.
+1	Acima de 65 anos.	Forças Armadas	De 4 a 6 salários mínimos.	Outro
+1	De 50 a 65 anos.	INSS	Acima de 6 salários mínimos.	Reforma da Casa
+1	Até 30 anos.	Outros	Até 2 salários mínimos.	Pagar Contas.
+\.
+
+
+--
+-- TOC entry 2868 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: tb_form_pergunta_id_formulario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_form_pergunta_id_formulario_seq', 1, false);
+
+
+--
+-- TOC entry 2869 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: tb_form_pergunta_id_pergunta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_form_pergunta_id_pergunta_seq', 1, false);
+
+
+--
+-- TOC entry 2870 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: tb_formulario_id_formulario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_formulario_id_formulario_seq', 1, false);
+
+
+--
+-- TOC entry 2871 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: tb_perguntas_id_pergunta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_perguntas_id_pergunta_seq', 1, false);
+
+
+--
+-- TOC entry 2872 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: tb_respostas_id_formulario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_respostas_id_formulario_seq', 1, false);
+
+
+--
+-- TOC entry 2720 (class 2606 OID 16539)
+-- Name: tb_form_pergunta tb_form_pergunta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_form_pergunta
+    ADD CONSTRAINT tb_form_pergunta_pkey PRIMARY KEY (id_formulario, id_pergunta);
+
+
+--
+-- TOC entry 2716 (class 2606 OID 16498)
+-- Name: tb_formulario tb_formulario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_formulario
+    ADD CONSTRAINT tb_formulario_pkey PRIMARY KEY (id_formulario);
+
+
+--
+-- TOC entry 2718 (class 2606 OID 16509)
+-- Name: tb_perguntas tb_perguntas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_perguntas
+    ADD CONSTRAINT tb_perguntas_pkey PRIMARY KEY (id_pergunta);
+
+
+--
+-- TOC entry 2721 (class 2606 OID 16528)
+-- Name: tb_form_pergunta fk_id_formulario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_form_pergunta
+    ADD CONSTRAINT fk_id_formulario FOREIGN KEY (id_formulario) REFERENCES public.tb_formulario(id_formulario) NOT VALID;
+
+
+--
+-- TOC entry 2722 (class 2606 OID 16533)
+-- Name: tb_form_pergunta fk_id_pergunta; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_form_pergunta
+    ADD CONSTRAINT fk_id_pergunta FOREIGN KEY (id_pergunta) REFERENCES public.tb_perguntas(id_pergunta) NOT VALID;
+
+
+-- Completed on 2021-07-20 10:33:24
+
+--
+-- PostgreSQL database dump complete
+--
+
